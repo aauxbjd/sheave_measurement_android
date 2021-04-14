@@ -45,32 +45,9 @@ public class Fragment2InputSheave extends Fragment {
             @Override
             public void onClick(View v) {
 
-                int selectedID = rg.getCheckedRadioButtonId();
-                switch (selectedID) {
-                    case R.id.single:
-                        bundle.putString("type", "Single Sheave");
-                        break;
-                    case R.id.block:
-                        bundle.putString("type", "Sheave Block");
-                        break;
-                    case R.id.rope:
-                        bundle.putString("type", "Wire Rope");
-                        break;
-                    default:
-                        Toast.makeText(getContext(), "error no any Inspection type selected", Toast.LENGTH_LONG).show();
-                        break;
 
-                }
 
-                if (selectedID == 0 ) Toast.makeText(getContext(), "error no any Inspection type selected", Toast.LENGTH_LONG).show();
-                else if (model.getText().length() == 0) model.setError("Date Required");
-                else if (serial.getText().length() == 0) serial.setError("Site Required");
-                else if (noSheaves.getText().length() == 0) noSheaves.setError("Inspector Required");
-                else if (diam.getText().length() == 0) diam.setError("phone Required");
-                else if (ropeSize.getText().length() == 0) ropeSize.setError("emailRequired");
-                else if (note2.getText().length() == 0) note2.setError("notes required");
-
-                else{
+                if(validDate()){
                     Fragment3InputSheave fragment3 = new Fragment3InputSheave();
 
                     bundle.putString("model", model.getText().toString());
@@ -89,6 +66,56 @@ public class Fragment2InputSheave extends Fragment {
                     fr.commit();
                 }
 
+
+
+            }
+
+            private Boolean validDate() {
+
+                int selectedID = rg.getCheckedRadioButtonId();
+
+                switch (selectedID) {
+                    case R.id.single:
+                        bundle.putString("type", "Single Sheave");
+                        break;
+                    case R.id.block:
+                        bundle.putString("type", "Sheave Block");
+                        break;
+                    case R.id.rope:
+                        bundle.putString("type", "Wire Rope");
+                        break;
+                    default:
+                        return false;
+                }
+
+                //if (selectedID == 0 ) Toast.makeText(getContext(), "error no any Inspection type selected", Toast.LENGTH_LONG).show();
+                if (model.getText().length() == 0) {
+                    model.setError("Date Required");
+                    return false;
+                }
+                if (serial.getText().length() == 0){
+                    serial.setError("Site Required");
+                    return false;
+                }
+                if (noSheaves.getText().length() == 0) {
+                    noSheaves.setError("Inspector Required");
+                    return false;
+                }
+                if (diam.getText().length() == 0) {
+                    diam.setError("phone Required");
+                    return false;
+                }
+                if (ropeSize.getText().length() == 0){
+                    ropeSize.setError("emailRequired");
+                    return false;
+                }
+                if (note2.getText().length() == 0){
+                    note2.setError("notes required");
+                    return false;
+                }
+                else{
+                    return true;
+                }
 
 
             }

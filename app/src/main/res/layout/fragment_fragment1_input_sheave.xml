@@ -22,7 +22,7 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="March, 24, 2021"
+            android:hint="01/11/1999"
             android:inputType="date"
             android:padding="@dimen/horizontal_padding_child" />
 
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:padding="@dimen/horizontal_padding_child"
-            android:text="Phone:: " />
+            android:text="Phone:" />
 
         <EditText
             android:id="@+id/phone"
@@ -86,6 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="555-321-6543"
+            android:inputType="phone"
             android:padding="@dimen/horizontal_padding_child" />
 
     </LinearLayout>
