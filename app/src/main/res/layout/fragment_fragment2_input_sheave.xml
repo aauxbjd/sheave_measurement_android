@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment2InputSheave">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/horizontal_padding">
+
+        <Switch
+            android:id="@+id/switch1"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:checked="false"
+            android:padding="@dimen/horizontal_padding_child"
+            android:text=" Inch" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/horizontal_padding_child"
+            android:text="Inspection Type: " />
+
+        <RadioGroup
+            android:id="@+id/radioGrp"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/single"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Single Sheave" />
+
+            <RadioButton
+                android:id="@+id/block"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sheave Block" />
+
+            <RadioButton
+                android:id="@+id/rope"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wire Rope" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/horizontal_padding"
+        android:weightSum="5">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:padding="@dimen/horizontal_padding_child"
+            android:text="Block Model: " />
+
+        <EditText
+            android:id="@+id/model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="B42-F400"
+            android:padding="@dimen/horizontal_padding_child" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:padding="@dimen/horizontal_padding_child"
+            android:text="Serial No. " />
+
+        <EditText
+            android:id="@+id/serial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="070788"
+            android:padding="@dimen/horizontal_padding_child" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/horizontal_padding"
+        android:weightSum="5">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:padding="@dimen/horizontal_padding_child"
+            android:text="No. of Sheaves: " />
+
+        <EditText
+            android:id="@+id/noSheaves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="6"
+            android:padding="@dimen/horizontal_padding_child" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:padding="@dimen/horizontal_padding_child"
+            android:text="Outside Sheave Diam:  " />
+
+        <EditText
+            android:id="@+id/diameter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="42"
+            android:padding="@dimen/horizontal_padding_child" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:padding="@dimen/horizontal_padding_child"
+            android:text="Nominal Rope Size: " />
+
+        <EditText
+            android:id="@+id/ropeSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="42"
+            android:padding="@dimen/horizontal_padding_child" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/horizontal_padding_child"
+            android:text="Notes:" />
+
+        <EditText
+            android:id="@+id/notes2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/horizontal_padding_child"
+            android:hint="All sheaves rotated freely, \nMPI performed by 3rd party \nClevis and primary load path. \nGrooves all OK, \nno wear apparent" />
+
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="next"
+        android:id="@+id/btnNext2"/>
+
+</LinearLayout>
