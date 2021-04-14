@@ -27,45 +27,45 @@ public class Fragment3InputSheave extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_fragment3_input_sheave, container, false);
         TextView txt = view.findViewById(R.id.fg3);
+        Bundle bundle = this.getArguments();
 
+        SheaveMeasurements sm = new SheaveMeasurements();
 
+        sm.setInspectionDate(bundle.getString("date"));
+        sm.setInspectionSite(bundle.getString("site"));
+        sm.setInspector(bundle.getString("inspector"));
+        sm.setPhone(bundle.getString("phone"));
+        sm.setEmail(bundle.getString("email"));
+        sm.setNotes1(bundle.getString("notes1"));
+        sm.setBlockModel(bundle.getString("model"));
+        sm.setSerialNumber(bundle.getInt("serial"));
+        sm.setNumberOfSheaves(bundle.getInt("noSheaves"));
+        sm.setOutsideSheaveDiam(bundle.getFloat("diam"));
+        sm.setNominalRopeSize(bundle.getString("ropeSize"));
+        sm.setInspectionType(bundle.getString("type"));
+        sm.setNotes2(bundle.getString("note2"));
 
-
-        final Bundle bundle = this.getArguments();
-
-        StringBuilder builder = new StringBuilder("Extras:\n");
-
-        //loop through bundle
-        for (String key : bundle.keySet()) {
-            Object value = bundle.get(key);      //get the current object
-
-            builder.append(key)
-                    .append(":")
-                    .append(value)
-                    .append("\n");      //add the key-value pair to the builder
-
-        }
-        Log.d("EXtra",builder.toString());
-        txt.setText(builder.toString());
+        Log.d("EXtra",sm.toString());
+        txt.setText(sm.toString());
+//        StringBuilder builder = new StringBuilder("Extras:\n");
+//        //loop through bundle
+//        for (String key : bundle.keySet()) {
+//            Object value = bundle.get(key);      //get the current object
+//
+//            builder.append(key)
+//                    .append(":")
+//                    .append(value)
+//                    .append("\n");      //add the key-value pair to the builder
+//
+//        }
+//        Log.d("EXtra",builder.toString());
+//        txt.setText(builder.toString());
 
         Button btnSave = view.findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               SheaveMeasurements sm = new SheaveMeasurements();
 
-               sm.setInspectionDate(bundle.getString("date"));
-               sm.setInspectionSite(bundle.getString("site"));
-               sm.setInspector(bundle.getString("inspector"));
-               sm.setPhone(bundle.getString("phone"));
-               sm.setEmail(bundle.getString("email"));
-               sm.setNotes1(bundle.getString("notes1"));
-               sm.setBlockModel(bundle.getString("model"));
-               sm.setSerialNumber(bundle.getInt("serial"));
-               sm.setNumberOfSheaves(bundle.getInt("noSheaves"));
-               sm.setOutsideSheaveDiam(bundle.getFloat("diam"));
-               sm.setNominalRopeSize(bundle.getString("ropeSize"));
-               sm.setNotes2(bundle.getString("note2"));
 
 //                for (Field field : sm.getClass().getDeclaredFields()) {
 //                    field.setAccessible(true);

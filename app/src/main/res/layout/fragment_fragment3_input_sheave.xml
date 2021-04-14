@@ -11,7 +11,9 @@
         android:id="@+id/fg3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="tjh" />
+        android:text="tjh"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="14sp" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

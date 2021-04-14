@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ public class Fragment2InputSheave extends Fragment {
                              Bundle savedInstanceState) {
 
         container.removeAllViews();
-        View view = inflater.inflate(R.layout.fragment_fragment2_input_sheave, container, false);
+        final View view = inflater.inflate(R.layout.fragment_fragment2_input_sheave, container, false);
         final RadioGroup rg = view.findViewById(R.id.radioGrp);
         final EditText model = view.findViewById(R.id.model);
         final EditText serial = view.findViewById(R.id.serial);
@@ -36,6 +37,7 @@ public class Fragment2InputSheave extends Fragment {
         final EditText note2 = view.findViewById(R.id.notes2);
 
         Button next2 = view.findViewById(R.id.btnNext2);
+        final RadioButton rb = view.findViewById(R.id.single);
 
 
         final Bundle bundle = this.getArguments();
@@ -44,16 +46,29 @@ public class Fragment2InputSheave extends Fragment {
         next2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int selectedID = rg.getCheckedRadioButtonId();
 
 
+                if (validData()) {
 
-                if(validDate()){
                     Fragment3InputSheave fragment3 = new Fragment3InputSheave();
 
+                    switch (selectedID) {
+                        case R.id.single:
+                            bundle.putString("type", "Single Sheave");
+                            break;
+                        case R.id.block:
+                            bundle.putString("type", "Sheave Block");
+                            break;
+                        case R.id.rope:
+                            bundle.putString("type", "Wire Rope");
+                            break;
+                    }
+
                     bundle.putString("model", model.getText().toString());
-                    bundle.putInt("serial",Integer.parseInt(serial.getText().toString()));
+                    bundle.putInt("serial", Integer.parseInt(serial.getText().toString()));
                     bundle.putInt("noSheaves", Integer.parseInt(noSheaves.getText().toString()));
-                    bundle.putFloat("diam",Float.parseFloat(diam.getText().toString())) ;
+                    bundle.putFloat("diam", Float.parseFloat(diam.getText().toString()));
                     bundle.putString("ropeSize", ropeSize.getText().toString());
                     bundle.putString("note2", note2.getText().toString());
 
@@ -67,33 +82,18 @@ public class Fragment2InputSheave extends Fragment {
                 }
 
 
-
             }
 
-            private Boolean validDate() {
-
-                int selectedID = rg.getCheckedRadioButtonId();
-
-                switch (selectedID) {
-                    case R.id.single:
-                        bundle.putString("type", "Single Sheave");
-                        break;
-                    case R.id.block:
-                        bundle.putString("type", "Sheave Block");
-                        break;
-                    case R.id.rope:
-                        bundle.putString("type", "Wire Rope");
-                        break;
-                    default:
-                        return false;
+            private Boolean validData() {
+                if (rg.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(getContext(), "Inspection Type Required!!", Toast.LENGTH_SHORT).show();
+                    return false;
                 }
-
-                //if (selectedID == 0 ) Toast.makeText(getContext(), "error no any Inspection type selected", Toast.LENGTH_LONG).show();
                 if (model.getText().length() == 0) {
                     model.setError("Date Required");
                     return false;
                 }
-                if (serial.getText().length() == 0){
+                if (serial.getText().length() == 0) {
                     serial.setError("Site Required");
                     return false;
                 }
@@ -105,15 +105,14 @@ public class Fragment2InputSheave extends Fragment {
                     diam.setError("phone Required");
                     return false;
                 }
-                if (ropeSize.getText().length() == 0){
+                if (ropeSize.getText().length() == 0) {
                     ropeSize.setError("emailRequired");
                     return false;
                 }
-                if (note2.getText().length() == 0){
+                if (note2.getText().length() == 0) {
                     note2.setError("notes required");
                     return false;
-                }
-                else{
+                } else {
                     return true;
                 }
 
