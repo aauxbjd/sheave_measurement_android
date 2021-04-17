@@ -1,7 +1,6 @@
 package com.example.sheave_measurement;
 
-import android.content.Context;
-import android.net.Uri;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,25 +10,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.lang.reflect.Field;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 
 public class Fragment3InputSheave extends Fragment {
+    Button btnSave, btnDel;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference myref = database.getReference().child("Measurements");
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        container.removeAllViews();
+        // container.removeAllViews();
 
         View view = inflater.inflate(R.layout.fragment_fragment3_input_sheave, container, false);
-        TextView txt = view.findViewById(R.id.fg3);
-        Bundle bundle = this.getArguments();
+        btnSave = view.findViewById(R.id.btnSave);
+        btnDel = view.findViewById(R.id.btnDelete);
 
-        SheaveMeasurements sm = new SheaveMeasurements();
+        TextView txt = view.findViewById(R.id.fg3);
+         Bundle bundle = this.getArguments();
+
+        final SheaveMeasurements sm = new SheaveMeasurements();
 
         sm.setInspectionDate(bundle.getString("date"));
         sm.setInspectionSite(bundle.getString("site"));
@@ -47,32 +55,58 @@ public class Fragment3InputSheave extends Fragment {
 
         Log.d("EXtra",sm.toString());
         txt.setText(sm.toString());
-//        StringBuilder builder = new StringBuilder("Extras:\n");
-//        //loop through bundle
-//        for (String key : bundle.keySet()) {
-//            Object value = bundle.get(key);      //get the current object
-//
-//            builder.append(key)
-//                    .append(":")
-//                    .append(value)
-//                    .append("\n");      //add the key-value pair to the builder
-//
-//        }
-//        Log.d("EXtra",builder.toString());
-//        txt.setText(builder.toString());
 
-        Button btnSave = view.findViewById(R.id.btnSave);
+
+
+
+
+        StringBuilder builder = new StringBuilder("Extras:\n");
+        //loop through bundle
+        for (String key : bundle.keySet()) {
+            Object value = bundle.get(key);      //get the current object
+
+            builder.append(key)
+                    .append(":")
+                    .append(value)
+                    .append("\n");      //add the key-value pair to the builder
+
+        }
+        Log.d("EXtra",builder.toString());
+        txt.setText(builder.toString());
+
+
+
+        //on Save
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                HashMap<String, String> measurementMap = new HashMap<>();
+//                measurementMap.put("Date", sm.getInspectionDate());
+//                measurementMap.put("Inspection Site", sm.getInspectionSite());
+//                measurementMap.put("Inspector", sm.getInspector());
+//                measurementMap.put("Phone", sm.getPhone());
+//                measurementMap.put("E-mail", sm.getEmail());
+//                measurementMap.put("Notes 1", sm.getNotes1());
+//                measurementMap.put("Inspection Type", sm.getInspectionType());
+//                measurementMap.put("Block Model", sm.getBlockModel());
+//                measurementMap.put("Serial Number", sm.getSerialNumber());
+//                measurementMap.put("Inspection Site", sm.getInspectionSite());
+//                measurementMap.put("Inspection Site", sm.getInspectionSite());
+//                measurementMap.put("Inspection Site", sm.getInspectionSite());
+//                measurementMap.put("Inspection Site", sm.getInspectionSite());
 
+                myref.push().setValue(sm);
+                Toast.makeText(getContext(), "call database", Toast.LENGTH_SHORT).show();
+//                }
+            }
+        });
 
-//                for (Field field : sm.getClass().getDeclaredFields()) {
-//                    field.setAccessible(true);
-//                    Object value = field.get(sm);
-//                    String name = field.getName();
-//
-//                    System.out.printf("%s: %s%n", name, value);
+        //on cancel
+        btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getContext(), "clear", Toast.LENGTH_SHORT).show();
 //                }
             }
         });
