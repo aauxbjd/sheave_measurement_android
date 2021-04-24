@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="01/11/1999"
-            android:inputType="date"
+            android:inputType="number|text"
             android:padding="@dimen/horizontal_padding_child" />
 
 
@@ -69,34 +69,37 @@
             android:id="@+id/inspector"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
             android:hint="John Brown"
-            android:padding="@dimen/horizontal_padding_child" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:padding="@dimen/horizontal_padding_child"
-            android:text="Phone:" />
-
-        <EditText
-            android:id="@+id/phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="555-321-6543"
-            android:inputType="phone"
-            android:padding="@dimen/horizontal_padding_child" />
-
+             />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:padding="@dimen/horizontal_padding">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone:" />
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="555-321-6543"
+            android:inputType="phone"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="@dimen/horizontal_padding"
-        android:weightSum="5">
+        >
 
         <TextView
             android:layout_width="wrap_content"
@@ -109,9 +112,7 @@
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:hint="johnbrown@gmail.com"
-            android:padding="@dimen/horizontal_padding_child" />
+            android:hint="johnbrown@gmail.com" />
 
     </LinearLayout>
 
@@ -135,10 +136,14 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnNext1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
-        android:id="@+id/btnNext1"/>
+        android:layout_gravity="center_horizontal"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="next"
+        android:translationY="40sp"/>
 
 
 </LinearLayout>

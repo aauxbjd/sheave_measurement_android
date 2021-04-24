@@ -48,7 +48,6 @@ public class Fragment2InputSheave extends Fragment {
             public void onClick(View v) {
                 int selectedID = rg.getCheckedRadioButtonId();
 
-
                 if (validData()) {
 
                     Fragment3InputSheave fragment3 = new Fragment3InputSheave();
@@ -74,14 +73,10 @@ public class Fragment2InputSheave extends Fragment {
 
 
                     fragment3.setArguments(bundle);
-
-
                     FragmentTransaction fr = getFragmentManager().beginTransaction();
                     fr.replace(R.id.fragment_container, fragment3);
                     fr.commit();
                 }
-
-
             }
 
             private Boolean validData() {

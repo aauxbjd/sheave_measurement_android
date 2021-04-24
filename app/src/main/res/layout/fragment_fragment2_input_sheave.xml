@@ -100,8 +100,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/horizontal_padding"
-        android:weightSum="5">
+        android:padding="@dimen/horizontal_padding">
 
         <TextView
             android:layout_width="wrap_content"
@@ -161,10 +160,15 @@
             android:hint="All sheaves rotated freely, \nMPI performed by 3rd party \nClevis and primary load path. \nGrooves all OK, \nno wear apparent" />
 
     </LinearLayout>
+
     <Button
+        android:id="@+id/btnNext2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:scaleX="2"
+        android:scaleY="2"
         android:text="next"
-        android:id="@+id/btnNext2"/>
+        android:translationY="40sp" />
 
 </LinearLayout>

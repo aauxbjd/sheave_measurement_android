@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "227484069790",
+    "firebase_url": "https://sheavemeasurement-default-rtdb.firebaseio.com",
+    "project_id": "sheavemeasurement",
+    "storage_bucket": "sheavemeasurement.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227484069790:android:fa13e6395cd21ad120308f",
+        "android_client_info": {
+          "package_name": "com.example.sheave_measurement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "227484069790-pf2isuohm2ilcdc6pqmjf2053o8alnro.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGEz4PpcbBhxe_fewu0-iWbUJMwffs1Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "227484069790-pf2isuohm2ilcdc6pqmjf2053o8alnro.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

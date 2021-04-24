@@ -1,6 +1,7 @@
 package com.example.sheave_measurement;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -25,9 +26,11 @@ public class Fragment3InputSheave extends Fragment {
     private DatabaseReference myref = database.getReference().child("Measurements");
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // container.removeAllViews();
 
         View view = inflater.inflate(R.layout.fragment_fragment3_input_sheave, container, false);
@@ -80,24 +83,12 @@ public class Fragment3InputSheave extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                HashMap<String, String> measurementMap = new HashMap<>();
-//                measurementMap.put("Date", sm.getInspectionDate());
-//                measurementMap.put("Inspection Site", sm.getInspectionSite());
-//                measurementMap.put("Inspector", sm.getInspector());
-//                measurementMap.put("Phone", sm.getPhone());
-//                measurementMap.put("E-mail", sm.getEmail());
-//                measurementMap.put("Notes 1", sm.getNotes1());
-//                measurementMap.put("Inspection Type", sm.getInspectionType());
-//                measurementMap.put("Block Model", sm.getBlockModel());
-//                measurementMap.put("Serial Number", sm.getSerialNumber());
-//                measurementMap.put("Inspection Site", sm.getInspectionSite());
-//                measurementMap.put("Inspection Site", sm.getInspectionSite());
-//                measurementMap.put("Inspection Site", sm.getInspectionSite());
-//                measurementMap.put("Inspection Site", sm.getInspectionSite());
-
                 myref.push().setValue(sm);
-                Toast.makeText(getContext(), "call database", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Saved", Toast.LENGTH_LONG).show();
 //                }
+                Intent intent = new Intent((InputSheave)getActivity(),MainActivity.class);
+
+                startActivity(intent);
             }
         });
 
@@ -107,6 +98,9 @@ public class Fragment3InputSheave extends Fragment {
             public void onClick(View v) {
 
                 Toast.makeText(getContext(), "clear", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent((InputSheave)getActivity(),MainActivity.class);
+
+                startActivity(intent);
 //                }
             }
         });

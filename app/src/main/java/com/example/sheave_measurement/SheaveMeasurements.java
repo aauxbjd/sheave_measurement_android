@@ -1,6 +1,13 @@
 package com.example.sheave_measurement;
 
-public class SheaveMeasurements {
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.Serializable;
+
+public class SheaveMeasurements implements Serializable {
+
+
 
     private String inspectionDate;
     private String inspectionSite;
@@ -16,27 +23,27 @@ public class SheaveMeasurements {
     private String nominalRopeSize;
     private String notes2;
 
+    public SheaveMeasurements() {
+    }
+
+    public SheaveMeasurements(String inspectionDate, String inspectionSite, String inspector, String phone, String email, String notes1, String inspectionType, String blockModel, int serialNumber, int numberOfSheaves, float outsideSheaveDiam, String nominalRopeSize, String notes2) {
+        this.inspectionDate = inspectionDate;
+        this.inspectionSite = inspectionSite;
+        this.inspector = inspector;
+        this.phone = phone;
+        this.email = email;
+        this.notes1 = notes1;
+        this.inspectionType = inspectionType;
+        this.blockModel = blockModel;
+        this.serialNumber = serialNumber;
+        this.numberOfSheaves = numberOfSheaves;
+        this.outsideSheaveDiam = outsideSheaveDiam;
+        this.nominalRopeSize = nominalRopeSize;
+        this.notes2 = notes2;
+    }
+
 
     public String toString() {
-        StringBuilder builder = new StringBuilder("Extras:\n");
-//
-//        Field[] fields = getClass().getDeclaredFields(); // get all the fields from your class.
-//        for (Field f : fields) {                         // iterate over each field...
-//            try {
-//                if (f.get(this) != null) {               // evaluate field value.
-//
-//                    builder.append(f.getName())
-//                            .append(":")
-//                            .append(f.get(this))
-//                            .append("\n");
-//                    // Field is null
-//                }
-//            } catch (IllegalArgumentException ex) {
-//                ex.printStackTrace();
-//            } catch (IllegalAccessException ex) {
-//                ex.printStackTrace();
-//            }
-//        }
         return "\nInspection Date: " + String.format("%25s",inspectionDate)  +
                 "\nInspection Site: " + String.format("%25s",inspectionSite) +
                 "\nInspector: " + String.format("%25s",inspector) +
@@ -50,14 +57,6 @@ public class SheaveMeasurements {
                 "\nOutside Sheave Diameter: " + String.format("%25s",outsideSheaveDiam) +
                 "\nNominal Rope Size: " + String.format("%25s",nominalRopeSize) +
                 "\nNote 2: " + String.format("%25s",notes2);
-
-//        builder.append(String.format("%-30s %-30s %n", "Inspection Date:", blockModel))
-//                .append(String.format("%-30s %-30s %n", "Inspection:", inspectionType))
-//        .append(String.format("%-30s %-30s %n", "asdg:", notes2))
-//        .append(String.format("%-30s %-30s %n", "adgsa gasdgagsa:", outsideSheaveDiam));
-//
-//        return builder.toString();
-
     }
 
 

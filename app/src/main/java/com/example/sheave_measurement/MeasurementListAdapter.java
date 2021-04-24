@@ -19,9 +19,9 @@ public class MeasurementListAdapter extends ArrayAdapter<SheaveMeasurements> {
     private Context  mContext;
     private int layoutResourceId;
 
-    @NonNull
+
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(int position,  View convertView,  ViewGroup parent) {
         try {
             SheaveMeasurements item = getItem(position);
             View v = null;
@@ -34,9 +34,11 @@ public class MeasurementListAdapter extends ArrayAdapter<SheaveMeasurements> {
                 v = convertView;
             }
 
+            TextView date = (TextView) v.findViewById(R.id.txtDate);
             TextView site = (TextView) v.findViewById(R.id.txtSite);
             TextView type = (TextView) v.findViewById(R.id.txtType);
 
+            date.setText(item.getInspectionDate());
             site.setText(item.getInspectionSite());
             type.setText(item.getInspectionType());
 
@@ -47,7 +49,7 @@ public class MeasurementListAdapter extends ArrayAdapter<SheaveMeasurements> {
         }
     }
 
-    public MeasurementListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<SheaveMeasurements> objects) {
+    public MeasurementListAdapter(Context context, int resource, ArrayList<SheaveMeasurements> objects) {
         super(context, resource, objects);
         layoutResourceId = resource;
     }

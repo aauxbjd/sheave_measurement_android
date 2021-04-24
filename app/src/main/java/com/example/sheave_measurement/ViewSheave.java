@@ -65,7 +65,6 @@ public class ViewSheave extends AppCompatActivity {
                 Intent intent = new Intent(ViewSheave.this,SingleListItem.class);
                 intent.putExtra("data", sv );
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), sv.toString(), Toast.LENGTH_LONG).show();
             }
         });
 
